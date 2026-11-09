@@ -207,10 +207,10 @@ impl BaseMetaDataColumn {
                 FixedLenType::Int4 => ColumnData::I32(None),
                 FixedLenType::Datetime4 => ColumnData::SmallDateTime(None),
                 FixedLenType::Float4 => ColumnData::F32(None),
-                FixedLenType::Money => ColumnData::F64(None),
+                FixedLenType::Money => ColumnData::Numeric(None),
                 FixedLenType::Datetime => ColumnData::DateTime(None),
                 FixedLenType::Float8 => ColumnData::F64(None),
-                FixedLenType::Money4 => ColumnData::F32(None),
+                FixedLenType::Money4 => ColumnData::Numeric(None),
                 FixedLenType::Int8 => ColumnData::I64(None),
             },
             TypeInfo::VarLenSized(cx) => match cx.r#type() {
@@ -228,7 +228,7 @@ impl BaseMetaDataColumn {
                     4 => ColumnData::F32(None),
                     _ => ColumnData::F64(None),
                 },
-                VarLenType::Money => ColumnData::F64(None),
+                VarLenType::Money => ColumnData::Numeric(None),
                 VarLenType::Datetimen => ColumnData::DateTime(None),
                 #[cfg(feature = "tds73")]
                 VarLenType::Daten => ColumnData::Date(None),
@@ -1366,10 +1366,10 @@ mod tests {
             (Int4, ColumnData::I32(None)),
             (Datetime4, ColumnData::SmallDateTime(None)),
             (Float4, ColumnData::F32(None)),
-            (Money, ColumnData::F64(None)),
+            (Money, ColumnData::Numeric(None)),
             (Datetime, ColumnData::DateTime(None)),
             (Float8, ColumnData::F64(None)),
-            (Money4, ColumnData::F32(None)),
+            (Money4, ColumnData::Numeric(None)),
             (Int8, ColumnData::I64(None)),
         ];
 
